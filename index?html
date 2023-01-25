@@ -1,0 +1,197 @@
+<html class="translated-ltr"><!-- Mirrored from dappbuilder.org/bsc/tokensalewithreferral2/tokensale.html?id=0xde87Ed055c667Af43294596634d34626D72027Ce&net=97 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Jan 2023 16:00:14 GMT --><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Token sale page">
+
+    <title>Vente de jetons</title>
+   
+
+    <style>
+        
+        body {font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; color: #FFFFFF; background-color: #000000; font-size: 16px; font-weight: 400;}
+
+        h1 { font-size: 24px; font-weight: 700;}
+        h2 { font-size: 22px; font-weight: 500;}
+
+        .small {
+            font-size: 12px;
+        }
+
+        .err {
+             color: red;
+        }
+        
+        .green {
+             color: green;
+        }
+        
+        .blue {
+             color: blue;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+        
+        a {
+          color: #FFFFFF;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          color: #C0C0C0;
+        }
+        
+        .clickable {
+            cursor: pointer;
+        }
+        
+        .clickable:hover {
+            color: #C0C0C0;
+        }
+        
+        button {
+          background-color: #283747;
+          border: none;
+          border-radius: 2px;
+          color: white;
+          padding: 5px 20px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: inline-block;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        
+        button:hover {
+          background-color: #008000;
+        }
+        
+        button[disabled] {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+        
+        hr {
+            margin: 20px;
+            border: 0;
+            border-top: 1px dashed;
+        }
+        
+        input {
+          text-align: center;
+          font-size: 18px;
+          background-color: #000000;
+          color: #FFFFFF;
+          border:1px solid;
+          max-width: 100%;
+        }
+    </style>
+    
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-163444952-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-163444952-1');
+    </script>
+    
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+
+<body>
+    
+    <div style="text-align: center">
+        <button id="connect" style="font-size: 12px"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Connecter</font></font></button> <button class="switch" id="switch" style="font-size: 12px; display: none;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisez Metamask&nbsp;!</font></font></button>
+        <span id="nometamask" class="err" style="display: none;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Veuillez d'abord installer Metamask...</font></font></span>
+        <div class="network small"><span id="curnet"><span class="err"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Veuillez utiliser le navigateur/l'extension DApp (par exemple </font></font><a target="_blank" href="https://metamask.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Metamask</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> )</font></font></span></span> <span id="myAddr"></span>
+        <span id="referred" style="display:none"><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Référent : </font></font><span id="referrer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aucun</font></font></span></span></div>
+    </div>
+    
+    <div style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Informations sur le jeton</font></font></h1>
+        <h2><span id="tokenName"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(</font></font><span class="tokenSymbol"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h2>
+        <p><a target="_blank" href="#" id="tokenAddress"></a><br>
+        <span class="small err"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">N'envoyez pas de BNB au contrat de jeton&nbsp;!</font></font></span></p>
+        <!-- Reserved in case you want to show decimals and total supply: Decimals <span id="#tokenDecimals"></span> Total supply <span id="#tokenSupply"></span>-->
+        <p><button id="addToken" style="text-align: center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter au métamasque</font></font></button> <button id="copyToken" style="text-align: center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copier l'adresse</font></font></button></p>
+    </div>
+    
+    <hr>
+    
+    <div style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Statut de vente de jetons</font></font></h1>
+        <h1>
+            <span id="active" style="display:none" class="status green"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actif</font></font></span>
+            <span id="finished" style="display:none" class="status green"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fini</font></font></span>
+            <span id="addtokens" style="display:none" class="status err"><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Demandez à l'administrateur de la vente de jetons d'approuver le contrat de vente de jetons ou de vérifier le solde des jetons sur le portefeuille&nbsp;!</font></font></span>
+        </h1>
+        <p><progress id="progress" value="0" max="100" style="width: 70%"></progress></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soulevé:</font></font><span id="raised"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de</font></font><span class="hardcap"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jetons vendus&nbsp;:</font></font><span id="sold"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de</font></font><span class="saleqty"></span> <span class="tokenSymbol"></span></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restant:</font></font><span id="toraise"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB (~</font></font><span id="unsold"></span> <span class="tokenSymbol"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></p>
+    </div>
+    <hr>
+    
+    <div style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acheter des jetons</font></font></h1>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 BNB =</font></font><span class="rate"></span> <span class="tokenSymbol"></span></p>
+        <p><input type="number" id="buyAmount" value="0" min="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous obtenez : </font></font><span id="get"></span> <span class="tokenSymbol"></span></p>
+        <p><button id="buyBtn" style="text-align: center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acheter</font></font></button></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans mon portefeuille :</font></font><span id="myTokens"></span> <span class="tokenSymbol"></span></p>
+    </div>
+    <hr>
+    
+    <div style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Informations sur la vente de jetons</font></font></h1>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hardcap&nbsp;:</font></font><span class="hardcap"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB (~</font></font><span class="saleqty"></span> <span class="tokenSymbol"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tarif : 1 BNB =</font></font><span class="rate"></span> <span class="tokenSymbol"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(~</font></font><span class="price"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB/</font></font><span class="tokenSymbol"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></p>
+
+    </div>
+    <hr>
+    
+    <div style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contrat de vente</font></font></h1>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous pouvez également acheter des jetons en envoyant des BNB directement depuis votre portefeuille à ce contrat </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        (veuillez augmenter la limite de gaz à 200 000 ou même plus pour les jetons avec des fonctions spéciales comme autoLP, swaps, etc.)</font></font></p>
+        <p><a href="#" target="_blank" id="saleAddress"></a>  <button id="copySale" style="text-align: center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copier l'adresse</font></font></button></p>
+            <div style="text-align: center" id="saleqr"><img style="max-width: 80%" src="https://dappbuilder.org/php/qr.php?data=undefined"></div>
+    </div>
+    <hr>
+    
+    <div id="refarea" style="text-align: center">
+        <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Programme de parrainage</font></font></h1>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partagez votre lien de parrainage et soyez payé instantanément sur votre portefeuille pour chaque achat de jeton parrainé.</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total payé aux référents&nbsp;:</font></font><span id="refTotal"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commission de parrainage :</font></font><span id="refPercent"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">%</font></font></p>
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vos revenus de parrainage&nbsp;:</font></font><span id="refMy"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BNB</font></font></p>
+        
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partagez votre lien de parrainage ou votre code QR et obtenez une commission pour les achats de jetons parrainés instantanément dans votre portefeuille.</font></font></p>
+        <p><input type="text" id="referLink" size="70" readonly="true"> <button id="copyreflink"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copier le lien</font></font></button></p>
+        <div id="refqrcode">
+            <div style="text-align: center" id="refqr"></div>
+        </div>
+        <p id="refErr" class="err" style="display: none">Please connect your wallet on Binance Smart Chain to generate your referral link!</p>
+    </div>
+    
+    <hr>
+    
+    <div style="text-align: center">
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">✓ Propulsé par </font></font><a target="_blank" href="https://dappbuilder.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DappBuilder.org </font></font></a><br>
+        <span class="small"><a target="_blank" href="https://dappbuilder.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Créer un jeton ERC-20/BEP-20</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> | </font></font><a target="_blank" href="https://dappbuilder.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lancez gratuitement la vente / prévente / IDO de</font></font></a><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> jetons 
+        Important : </font></font><a target="_blank" href="https://dappbuilder.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DappBuilder.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> est un outil de création de contrat intelligent. </font><font style="vertical-align: inherit;">Nous n'avons aucun droit d'administrateur ni accès à cette vente de jetons ou à tout autre contrat intelligent créé par les utilisateurs. </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ne nous contactez pas avec des questions à ce sujet ou sur toute autre vente de jetons, nous n'avons rien à voir avec cela - il est entièrement détenu et géré par son créateur.</font></font></span></p>
+    </div>
+    
+    
+<script src="../../js/jquery-3.6.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/ethers-5.0.umd.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/tokensale.url.js" type="text/javascript" charset="utf-8"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google Traduction"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texte d'origine</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Proposer une meilleure traduction</span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body><!-- Mirrored from dappbuilder.org/bsc/tokensalewithreferral2/tokensale.html?id=0xde87Ed055c667Af43294596634d34626D72027Ce&net=97 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Jan 2023 16:00:17 GMT --></html>
